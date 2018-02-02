@@ -19,7 +19,7 @@ class WMSTRasterLayer(TimeRasterLayer):
         self.timeFormat = self.determine_format(settings.startTimeAttribute, settings.timeFormat)
         self.offset = int(settings.offset)
         self.originalUri = self.layer.dataProvider().dataSourceUri()
-        self.timeQueryString = "TIME"
+        self.timeQueryString = settings.customQueryString if settings.customQueryString else 'TIME'
         try:
             self.getTimeExtents()
         except NotATimeAttributeError, e:

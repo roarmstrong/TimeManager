@@ -130,6 +130,27 @@
        </property>
       </widget>
      </item>
+     <item row="13" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Custom query string</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="QLineEdit" name="customQueryString">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="2">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>(optional)</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>

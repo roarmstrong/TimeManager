@@ -42,6 +42,7 @@ class LayerSettings:
         self.subsetStr = ''
         self.geometriesCount = True
         self.accumulate = False
+        self.customQueryString = ''
 
 
 def getSettingsFromSaveStr(saveStr):
@@ -103,6 +104,7 @@ def getSettingsFromAddRasterLayersUI(ui, layerIndexToId):
     result.layerId = layerIndexToId[ui.comboBoxLayers.currentIndex()]
     result.timeFormat = time_util.PENDING if ui.isCDF.checkState() != Qt.Checked else time_util.NETCDF_BAND
     result.offset = ui.spinBoxOffset.value()
+    result.customQueryString = ui.customQueryString.text()
     return result
 
 
