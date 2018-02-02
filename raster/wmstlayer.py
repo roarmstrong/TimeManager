@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import timedelta
+from ..tmlogging import info
 
 from .. import time_util
 from ..timerasterlayer import TimeRasterLayer
@@ -18,6 +19,7 @@ class WMSTRasterLayer(TimeRasterLayer):
         self.timeFormat = self.determine_format(settings.startTimeAttribute, settings.timeFormat)
         self.offset = int(settings.offset)
         self.originalUri = self.layer.dataProvider().dataSourceUri()
+        self.timeQueryString = "TIME"
         try:
             self.getTimeExtents()
         except NotATimeAttributeError, e:
@@ -59,10 +61,18 @@ class WMSTRasterLayer(TimeRasterLayer):
             self.deleteTimeRestriction()
             return
         startTime = timePosition + timedelta(seconds=self.offset)
-        endTime = timePosition + timeFrame + timedelta(seconds=self.offset)
-        timeString = "TIME={}/{}".format(
-            time_util.datetime_to_str(startTime, self.timeFormat),
-            time_util.datetime_to_str(endTime, self.timeFormat))
+        endTime   = timePosition + timeFrame + timedelta(seconds=self.offset)
+
+        start = time_util.datetime_to_str(startTime, self.timeFormat)
+        end   = time_util.datetime_to_str(endTime  , self.timeFormat)
+
+        # If the resolution of the time frame results in
+        # equal start and end strings, don't ask for a range
+        if start != end:
+            timeString = self.timeQueryString + "={}/{}".format(start, end)
+        else:
+            timeString = self.timeQueryString + "={}".format(start)
+
         dataUrl = self.IGNORE_PREFIX + self.originalUri + self.addUrlMark() + timeString
         #print "original URL: " + self.originalUri
         #print "final URL: " + dataUrl
