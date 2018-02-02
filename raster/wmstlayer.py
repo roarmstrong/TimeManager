@@ -66,8 +66,7 @@ class WMSTRasterLayer(TimeRasterLayer):
         start = time_util.datetime_to_str(startTime, self.timeFormat)
         end   = time_util.datetime_to_str(endTime  , self.timeFormat)
 
-        # If the resolution of the time frame results in
-        # equal start and end strings, don't ask for a range
+        # If start and end strings are equal, don't ask for a range
         if start != end:
             timeString = self.timeQueryString + "={}/{}".format(start, end)
         else:
