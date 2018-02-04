@@ -156,31 +156,31 @@ class TestForLayersWithOnePointPerSecond(TestWithQGISLauncher):
         self.assertEquals(layer.featureCount(), 2)
 
 
-# class testTimeManagerWithoutGui(TestWithQGISLauncher):
-#     def registerTweetsTimeLayer(self, fromAttr="T", toAttr="T"):
-#         self.layer = QgsVectorLayer(os.path.join(testcfg.TEST_DATA_DIR, 'tweets.shp'), 'tweets',
-#                                     'ogr')
-#         settings = ls.LayerSettings()
-#         settings.layer = self.layer
-#         settings.startTimeAttribute = fromAttr
-#         settings.endTimeAttribute = toAttr
-#         self.timeLayer = timevectorlayer.TimeVectorLayer(settings, iface=Mock())
-#         self.assertTrue(not self.timeLayer.hasTimeRestriction())
-#         self.tlm.registerTimeLayer(self.timeLayer)
-#         # refresh will have set the time restriction
-#         self.assertTrue(self.timeLayer.hasTimeRestriction())
+class testTimeManagerWithoutGui(TestWithQGISLauncher):
+    def registerTweetsTimeLayer(self, fromAttr="T", toAttr="T"):
+        self.layer = QgsVectorLayer(os.path.join(testcfg.TEST_DATA_DIR, 'tweets.shp'), 'tweets',
+                                    'ogr')
+        settings = ls.LayerSettings()
+        settings.layer = self.layer
+        settings.startTimeAttribute = fromAttr
+        settings.endTimeAttribute = toAttr
+        self.timeLayer = timevectorlayer.TimeVectorLayer(settings, iface=Mock())
+        self.assertTrue(not self.timeLayer.hasTimeRestriction())
+        self.tlm.registerTimeLayer(self.timeLayer)
+        # refresh will have set the time restriction
+        self.assertTrue(self.timeLayer.hasTimeRestriction())
 
-#     def test_go_back_and_forth_2011(self):
-#         self.go_back_and_forth("T", "T")
+    def test_go_back_and_forth_2011(self):
+        self.go_back_and_forth("T", "T")
 
-#     def test_go_back_and_forth_1965(self):
-#         self.go_back_and_forth("T1965", "T1965")
+    def test_go_back_and_forth_1965(self):
+        self.go_back_and_forth("T1965", "T1965")
 
-#     def test_go_back_and_forth_1765(self):
-#         self.go_back_and_forth("T1765", "T1765")
+    def test_go_back_and_forth_1765(self):
+        self.go_back_and_forth("T1765", "T1765")
 
-#     def test_go_back_and_forth_1165(self):
-#         self.go_back_and_forth("T1165", "T1165")
+    def test_go_back_and_forth_1165(self):
+        self.go_back_and_forth("T1165", "T1165")
 
 
 #     def test_disable_and_reenable(self):
