@@ -114,46 +114,46 @@ class TestWithQGISLauncher(unittest.TestCase):
         self.tlm = self.ctrl.getTimeLayerManager()
 
 
-# class TestForLayersWithOnePointPerSecond(TestWithQGISLauncher):
-#     """This class tests the functionality of layers for data that contains one point per second
-#     (our own convention to not have to write similar test code a lot of times). See the
-#     postgresql and delimited text tests for examples"""
+class TestForLayersWithOnePointPerSecond(TestWithQGISLauncher):
+    """This class tests the functionality of layers for data that contains one point per second
+    (our own convention to not have to write similar test code a lot of times). See the
+    postgresql and delimited text tests for examples"""
 
-#     __metaclass__ = ABCMeta
+    __metaclass__ = ABCMeta
 
-#     @abstractmethod
-#     def get_start_time(self):
-#         """Get first timestamp in epoch seconds"""
-#         pass
+    @abstractmethod
+    def get_start_time(self):
+        """Get first timestamp in epoch seconds"""
+        pass
 
-#     def _test_layer(self, layer, attr, typ, tf, attr2=None):
-#         if attr2 is None:
-#             attr2 = attr
-#         settings = ls.LayerSettings()
-#         settings.layer = layer
-#         settings.startTimeAttribute = attr
-#         settings.endTimeAttribute = attr2
-#         iface = Mock()
-#         timeLayer = timevectorlayer.TimeVectorLayer(settings, iface)
-#         # TODO
-#         # self.assertEqual(settings, ls.getSettingsFromLayer(timeLayer))
-#         self.tlm.registerTimeLayer(timeLayer)
-#         self.assertEquals(len(self.tlm.getActiveVectors()), 1)
-#         self.assertEquals(len(self.tlm.getActiveRasters()), 0)
-#         self.assertEquals(timeLayer.getDateType(), typ)
-#         if tf is not None:
-#             self.assertEquals(timeLayer.getTimeFormat(), tf)
-#         expected_datetime = time_util.epoch_to_datetime(self.get_start_time())
-#         self.assertEquals(self.tlm.getCurrentTimePosition(), expected_datetime)
-#         self.tlm.setTimeFrameType("seconds")
-#         self.assertEquals(layer.featureCount(), 1)
-#         self.assertEquals(self.tlm.getCurrentTimePosition(), expected_datetime)
-#         self.tlm.stepForward()
-#         self.assertEquals(layer.featureCount(), 1)
-#         expected_datetime = time_util.epoch_to_datetime(self.get_start_time() + 1)
-#         self.assertEquals(self.tlm.getCurrentTimePosition(), expected_datetime)
-#         self.tlm.setTimeFrameSize(2)
-#         self.assertEquals(layer.featureCount(), 2)
+    def _test_layer(self, layer, attr, typ, tf, attr2=None):
+        if attr2 is None:
+            attr2 = attr
+        settings = ls.LayerSettings()
+        settings.layer = layer
+        settings.startTimeAttribute = attr
+        settings.endTimeAttribute = attr2
+        iface = Mock()
+        timeLayer = timevectorlayer.TimeVectorLayer(settings, iface)
+        # TODO
+        # self.assertEqual(settings, ls.getSettingsFromLayer(timeLayer))
+        self.tlm.registerTimeLayer(timeLayer)
+        self.assertEquals(len(self.tlm.getActiveVectors()), 1)
+        self.assertEquals(len(self.tlm.getActiveRasters()), 0)
+        self.assertEquals(timeLayer.getDateType(), typ)
+        if tf is not None:
+            self.assertEquals(timeLayer.getTimeFormat(), tf)
+        expected_datetime = time_util.epoch_to_datetime(self.get_start_time())
+        self.assertEquals(self.tlm.getCurrentTimePosition(), expected_datetime)
+        self.tlm.setTimeFrameType("seconds")
+        self.assertEquals(layer.featureCount(), 1)
+        self.assertEquals(self.tlm.getCurrentTimePosition(), expected_datetime)
+        self.tlm.stepForward()
+        self.assertEquals(layer.featureCount(), 1)
+        expected_datetime = time_util.epoch_to_datetime(self.get_start_time() + 1)
+        self.assertEquals(self.tlm.getCurrentTimePosition(), expected_datetime)
+        self.tlm.setTimeFrameSize(2)
+        self.assertEquals(layer.featureCount(), 2)
 
 
 # class testTimeManagerWithoutGui(TestWithQGISLauncher):
