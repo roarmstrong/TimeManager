@@ -48,7 +48,7 @@ before_script:
         - export LD_LIBRARY_PATH=${QGIS_PREFIX_PATH}/lib
         
 script:
-        - bash run_tests.sh travis test/test_timelayers.py test/test_bc_dates.py test/test_functionality.py # this runs tests with coverage
+        - bash run_tests.sh test/test_timelayers.py test/test_bc_dates.py test/test_functionality.py # this runs tests with coverage
         #- sh pep8.sh # run pep8 on the python code
 
 after_success:
