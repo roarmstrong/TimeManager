@@ -114,7 +114,7 @@ class TestWithQGISLauncher(unittest.TestCase):
         self.tlm = self.ctrl.getTimeLayerManager()
 
     def tearDown(self):
-        self.qgs.exitQgis()
+        self.qgs.exit()
 
 
 class TestForLayersWithOnePointPerSecond(TestWithQGISLauncher):
