@@ -157,6 +157,8 @@ class TestForLayersWithOnePointPerSecond(TestWithQGISLauncher):
         self.assertEquals(self.tlm.getCurrentTimePosition(), expected_datetime)
         self.tlm.setTimeFrameSize(2)
         self.assertEquals(layer.featureCount(), 2)
+        del settings.layer
+        del timeLayer
 
 
 class testTimeManagerWithoutGui(TestWithQGISLauncher):
