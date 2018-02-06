@@ -181,37 +181,37 @@ class testTimeManagerWithoutGui(TestWithQGISLauncher):
         # refresh will have set the time restriction
         self.assertTrue(self.timeLayer.hasTimeRestriction())
 
-    # def test_go_back_and_forth_2011(self):
-    #     self.go_back_and_forth("T", "T")
+    def test_go_back_and_forth_2011(self):
+        self.go_back_and_forth("T", "T")
 
-    # def test_go_back_and_forth_1965(self):
-    #     self.go_back_and_forth("T1965", "T1965")
+    def test_go_back_and_forth_1965(self):
+        self.go_back_and_forth("T1965", "T1965")
 
-    # def test_go_back_and_forth_1765(self):
-    #     self.go_back_and_forth("T1765", "T1765")
-
-    # def test_go_back_and_forth_1165(self):
-    #     self.go_back_and_forth("T1165", "T1165")
-
-
-    def test_disable_and_reenable(self):
+    def test_go_back_and_forth_1765(self):
         self.go_back_and_forth("T1765", "T1765")
-        initial_time = self.tlm.getCurrentTimePosition()
-        feature_subset_size = self.layer.featureCount()
-        self.ctrl.toggleTimeManagement()
-        # time management is disabled
-        self.assertTrue(self.layer.featureCount() > feature_subset_size)
-        self.tlm.stepForward()
-        self.assertEquals(self.tlm.getCurrentTimePosition(), initial_time)
-        self.ctrl.toggleTimeManagement()
-        # time management is enabled again
-        self.assertEquals(self.ctrl.animationActivated, False)
-        self.ctrl.toggleAnimation()
-        self.assertEquals(self.ctrl.animationActivated, True)
-        self.assertEquals(self.tlm.getCurrentTimePosition(), initial_time)
-        self.assertEquals(self.layer.featureCount(), feature_subset_size)
-        self.tlm.stepForward()
-        self.assertTrue(self.tlm.getCurrentTimePosition() > initial_time)
+
+    def test_go_back_and_forth_1165(self):
+        self.go_back_and_forth("T1165", "T1165")
+
+
+    # def test_disable_and_reenable(self):
+    #     self.go_back_and_forth("T1765", "T1765")
+    #     initial_time = self.tlm.getCurrentTimePosition()
+    #     feature_subset_size = self.layer.featureCount()
+    #     self.ctrl.toggleTimeManagement()
+    #     # time management is disabled
+    #     self.assertTrue(self.layer.featureCount() > feature_subset_size)
+    #     self.tlm.stepForward()
+    #     self.assertEquals(self.tlm.getCurrentTimePosition(), initial_time)
+    #     self.ctrl.toggleTimeManagement()
+    #     # time management is enabled again
+    #     self.assertEquals(self.ctrl.animationActivated, False)
+    #     self.ctrl.toggleAnimation()
+    #     self.assertEquals(self.ctrl.animationActivated, True)
+    #     self.assertEquals(self.tlm.getCurrentTimePosition(), initial_time)
+    #     self.assertEquals(self.layer.featureCount(), feature_subset_size)
+    #     self.tlm.stepForward()
+    #     self.assertTrue(self.tlm.getCurrentTimePosition() > initial_time)
 
 #     def test_write_and_read_settings(self):
 #         self.go_back_and_forth("T1165", "T1165")
