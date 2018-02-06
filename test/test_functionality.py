@@ -102,6 +102,8 @@ class TestWithQGISLauncher(unittest.TestCase):
 
     def setUp(self):
 
+        print "setup"
+
         prefix = os_util.get_possible_prefix_path() if PREFIX_PATH is None else PREFIX_PATH
 
         self.qgs = QgsApplication(sys.argv, False)
@@ -114,6 +116,7 @@ class TestWithQGISLauncher(unittest.TestCase):
         self.tlm = self.ctrl.getTimeLayerManager()
 
     def tearDown(self):
+        print "attempt tear down"
         del self.iface
         del self.ctrl
         del self.tlm
