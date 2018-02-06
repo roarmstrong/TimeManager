@@ -114,6 +114,9 @@ class TestWithQGISLauncher(unittest.TestCase):
         self.tlm = self.ctrl.getTimeLayerManager()
 
     def tearDown(self):
+        del self.iface
+        del self.ctrl
+        del self.tlm
         self.qgs.exit()
 
 
