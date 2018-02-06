@@ -118,6 +118,7 @@ class TestWithQGISLauncher(unittest.TestCase):
         del self.ctrl
         del self.tlm
         self.qgs.exit()
+        print "teardown finished"
 
 
 class TestForLayersWithOnePointPerSecond(TestWithQGISLauncher):
