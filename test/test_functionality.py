@@ -121,7 +121,8 @@ class TestWithQGISLauncher(unittest.TestCase):
         del self.ctrl
         del self.tlm
         print "attempt qgis exit"
-        self.qgs.exit()
+        self.qgs.exitQgis()
+        del self.qgs
         print "teardown finished"
 
 
