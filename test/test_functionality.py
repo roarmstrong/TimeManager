@@ -110,10 +110,13 @@ class TestWithQGISLauncher(unittest.TestCase):
         self.qgs.setPrefixPath(prefix, True)
         self.qgs.initQgis()
 
+        print "qgis inited"
+
         self.iface = Mock()
         self.ctrl = RiggedTimeManagerControl(self.iface)
         self.ctrl.load()
         self.tlm = self.ctrl.getTimeLayerManager()
+        print "setup finished"
 
     def tearDown(self):
         print "attempt tear down"
