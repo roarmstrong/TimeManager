@@ -279,6 +279,7 @@ class testTimeManagerWithoutGui(TestWithQGISLauncher):
         self.registerTweetsTimeLayer(fromAttr, toAttr)
         # The currentTimePosition should now be the first date in the shapefile
         start_time = time_util.str_to_datetime(self.timeLayer.getMinMaxValues()[0])
+        print("test back and forth start")
         assert ( start_time == self.tlm.getCurrentTimePosition())
         self.tlm.setTimeFrameType("hours")
         self.tlm.stepForward()
@@ -290,7 +291,7 @@ class testTimeManagerWithoutGui(TestWithQGISLauncher):
         self.tlm.setTimeFrameType("seconds")
         self.tlm.stepForward()
         assert ( start_time + timedelta(hours=1, seconds=1) == self.tlm.getCurrentTimePosition())
-
+        print("test back and forth done")
 
 #     def test_export_with_empty(self):
 #         """The tweets layer doesn't have tweets for every second. Test that when exporting part
