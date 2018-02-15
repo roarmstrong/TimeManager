@@ -172,6 +172,7 @@ class TestForLayersWithOnePointPerSecond(TestWithQGISLauncher):
 
 class testTimeManagerWithoutGui(TestWithQGISLauncher):
     def registerTweetsTimeLayer(self, fromAttr="T", toAttr="T"):
+        print("register time layer")
         self.layer = QgsVectorLayer(os.path.join(testcfg.TEST_DATA_DIR, 'tweets.shp'), 'tweets',
                                     'ogr')
         settings = ls.LayerSettings()
