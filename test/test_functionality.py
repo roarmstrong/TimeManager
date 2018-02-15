@@ -185,6 +185,10 @@ class testTimeManagerWithoutGui(TestWithQGISLauncher):
         # refresh will have set the time restriction
         self.assertTrue(self.timeLayer.hasTimeRestriction())
 
+    def cleanTweetLayer(self):
+        del self.timeLayer
+        del self.layer
+
     def test_go_back_and_forth_2011(self):
         self.go_back_and_forth("T", "T")
 
