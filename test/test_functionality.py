@@ -277,9 +277,9 @@ class testTimeManagerWithoutGui(TestWithQGISLauncher):
     def go_back_and_forth(self, fromAttr, toAttr):
 
         self.registerTweetsTimeLayer(fromAttr, toAttr)
+        print("test back and forth start")
         # The currentTimePosition should now be the first date in the shapefile
         start_time = time_util.str_to_datetime(self.timeLayer.getMinMaxValues()[0])
-        print("test back and forth start")
         assert ( start_time == self.tlm.getCurrentTimePosition())
         self.tlm.setTimeFrameType("hours")
         self.tlm.stepForward()
