@@ -175,13 +175,16 @@ class testTimeManagerWithoutGui(TestWithQGISLauncher):
         print("register time layer")
         self.layer = QgsVectorLayer(os.path.join(testcfg.TEST_DATA_DIR, 'tweets.shp'), 'tweets',
                                     'ogr')
+        print ("layer contructed")
         settings = ls.LayerSettings()
         settings.layer = self.layer
         settings.startTimeAttribute = fromAttr
         settings.endTimeAttribute = toAttr
         self.timeLayer = timevectorlayer.TimeVectorLayer(settings, iface=Mock())
+        print("time layer constructed")
         self.assertTrue(not self.timeLayer.hasTimeRestriction())
         self.tlm.registerTimeLayer(self.timeLayer)
+        print("time layer registered")
         # refresh will have set the time restriction
         self.assertTrue(self.timeLayer.hasTimeRestriction())
 
