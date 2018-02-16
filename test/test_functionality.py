@@ -189,6 +189,7 @@ class testTimeManagerWithoutGui(TestWithQGISLauncher):
         self.assertTrue(self.timeLayer.hasTimeRestriction())
 
     def cleanTweetLayer(self):
+        print("clean tweet layer")
         del self.timeLayer
         del self.layer
 
