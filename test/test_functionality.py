@@ -278,6 +278,7 @@ class testTimeManagerWithoutGui(TestWithQGISLauncher):
 
         self.registerTweetsTimeLayer(fromAttr, toAttr)
         print("test back and forth start")
+        print("timelayer min max" + self.timeLayer.getMinMaxValues())
         # The currentTimePosition should now be the first date in the shapefile
         start_time = time_util.str_to_datetime(self.timeLayer.getMinMaxValues()[0])
         assert ( start_time == self.tlm.getCurrentTimePosition())
