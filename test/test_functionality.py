@@ -199,15 +199,19 @@ class testTimeManagerWithoutGui(TestWithQGISLauncher):
 
     def test_go_back_and_forth_2011(self):
         self.go_back_and_forth("T", "T")
+        cleanTweetLayer()
 
     def test_go_back_and_forth_1965(self):
         self.go_back_and_forth("T1965", "T1965")
+        cleanTweetLayer()
 
     def test_go_back_and_forth_1765(self):
         self.go_back_and_forth("T1765", "T1765")
+        cleanTweetLayer()
 
     def test_go_back_and_forth_1165(self):
         self.go_back_and_forth("T1165", "T1165")
+        cleanTweetLayer()
 
 
     # def test_disable_and_reenable(self):
